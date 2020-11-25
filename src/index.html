@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>WEB-POS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #username-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <!-- Content Wrapper. Contains page content -->
+    <div id="login-view" class="content-wrapper" style="margin: 0">
+        <form style="margin-left: 32%; margin-right: 32%;">
+            <div style="display: flex;flex-direction: row;justify-content: space-around;;"></div>
+            <div class="form-group" style="display: flex;flex-direction: row;justify-content: space-between">
+                <label for="username" style="margin-top: 20px;padding-top: 6px">Username </label>
+                <input type="email" class="form-control" id="username" aria-describedby="emailHelp"
+                       placeholder="Enter email" style="width: 80%;margin-top: 20px">
+            </div>
+            <div class="form-group" style="display: flex;flex-direction: row;justify-content: space-between">
+                <label for="password" style="padding-top: 6px">Password </label>
+                <input type="password" class="form-control" id="password" placeholder="Password"style="width: 80%">
+            </div>
+            <div>
+                <button id="sign-in" type="button"class="btn btn-primary" style="width: 20%;float: right">Sign in</button>
+            </div>
+        </form>
+
+    </div>
+    <div id="dashboard-view" class="hide">
+            <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+        </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="/" class="brand-link text-center">
+            <span class="brand-text">WEB POS</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class
+                         with font-awesome or any other icon font library -->
+                    <li class="nav-item">
+                        <a id = "dashboard" type="button" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Dashboard
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id = "manage-customers" type="button" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                Manage Customers
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="manage-items" type="button" class="nav-link">
+                            <i class="nav-icon fas fa-list-ol"></i>
+                            <p>
+                                Manage Items
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="place-order" type="button" class="nav-link">
+                            <i class="nav-icon fas fa-cart-plus"></i>
+                            <p>
+                                Place Orders
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="search-orders" type="button" class="nav-link">
+                            <i class="nav-icon fas fa-search"></i>
+                            <p>
+                                Search Orders
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 id = "current-header" class="m-0 text-dark">Dashboard</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Dashboard content -->
+        <section id="dashboard-content" class="content">
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                    <div class="col-lg-4 col-12">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>150</h3>
+
+                                <p>Customers</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-4 col-12">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>53</h3>
+
+                                <p>Items</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-list"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-4 col-12">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>44</h3>
+
+                                <p>Orders</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-cart-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                </div>
+                <!-- /.row -->
+                <!-- Main row -->
+                <div class="row">
+
+                </div>
+                <!-- /.row (main row) -->
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- Manage Customer content -->
+        <section id="manage-customer-content" class="content">
+            <div class="container-fluid" style="display: flex;flex-direction: column;padding-top: 30px">
+                <form style="display: flex;flex-wrap: wrap;">
+                    <div style="width: 42%;height: 50%;">
+                        <div class="container-fluid">
+                            <div class="form-group"
+                                 style="display: flex;flex-direction: row;justify-content: space-between">
+                                <label class="input-label" for="id">ID </label>
+                                <input type="text" class="form-control" id="id" aria-describedby="Enter ID"
+                                       placeholder="Enter ID" style="width: 80%;">
+                            </div>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="form-group"
+                                 style="display: flex;flex-direction: row;justify-content: space-between">
+                                <label class="input-label" for="mobile">Mobile</label>
+                                <input type="text" class="form-control" id="mobile"
+                                       aria-describedby="Enter contact number"
+                                       placeholder="Enter contact number" style="width: 80%;">
+                            </div>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="form-group"
+                                 style="display: flex;flex-direction: row;justify-content: space-between">
+                                <label class="input-label" for="email">E-mail </label>
+                                <input type="email" class="form-control" id="email" aria-describedby="Enter email"
+                                       placeholder="Enter email address" style="width: 80%;">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 42%;height: 50%;">
+                        <div class="container-fluid">
+                            <div class="form-group"
+                                 style="display: flex;flex-direction: row;justify-content: space-between">
+                                <label class="input-label" for="name">Full Name </label>
+                                <input type="text" class="form-control" id="name" aria-describedby="Enter full name"
+                                       placeholder="Enter email" style="width: 80%;">
+                            </div>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="form-group"
+                                 style="display: flex;flex-direction: row;justify-content: space-between">
+                                <label class="input-label" for="address">Address </label>
+                                <input type="text" class="form-control" id="address" aria-describedby="Enter Address"
+                                       placeholder="Enter address" style="width: 80%;">
+                            </div>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="custom-file" style="width: 80%;float: right">
+                                <input type="file" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Upload a photo</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="width: 16%;height: 50%;display: flex;justify-content: center">
+                        <img src="assert/avatar-icon-png-3-Transparent-Images.png" alt="Profile picture" width=65%
+                             height=65%>
+                    </div>
+                    <div style="display: flex;width: 100%;">
+                        <div class="container-fluid" style="display: flex;">
+                            <div class="form-group" style="display: flex;width: 100%;justify-content: flex-end">
+                                <div style="padding-left: 10px;padding-right: 10px"><button type="button" class="btn btn-primary">Save</button></div>
+                                <div style="padding-left: 10px;padding-right: 10px"><button type="button" class="btn btn-primary" style="background-color: #ff90ad;color: black">Delete</button></div>
+                                <div style="padding-left: 10px;"><button type="reset" class="btn btn-primary">Clear</button></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="container-fluid" style="display: flex;">
+                    <table class="table" id="customer_table">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Contact</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="row-data">
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>Mark</td>
+                            <td>
+                                <button type="delete" class="btn btn-primary" style="width: 80%;justify-content:center">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr  class="row-data">
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>
+                                <button type="delete" class="btn btn-primary" style="width: 80%;justify-content:center">
+                                    Delete
+                                </button>
+                            </td>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+
+        <!-- Manage Items content -->
+        <section id="manage-item-content" class="content">
+            <div class="container-fluid" style="display: flex;flex-direction: column; padding-top: 30px">
+                <form style="display: flex;flex-wrap: wrap;">
+                    <div style="width: 42%;height: 50%;">
+                        <div class="container-fluid">
+                            <div class="form-group"
+                                 style="display: flex;flex-direction: row;justify-content: space-between">
+                                <label class="input-label" for="code">Code </label>
+                                <input type="text" class="form-control" id="code" aria-describedby="Item_code"
+                                       placeholder="Enter code" style="width: 80%;">
+                            </div>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="form-group"
+                                 style="display: flex;flex-direction: row;justify-content: space-between">
+                                <label class="input-label" for="mobile">Unit Price</label>
+                                <input type="text" class="form-control" id="mobile" aria-describedby="Unit Price"
+                                       placeholder="Enter unit price" style="width: 80%;">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 42%;height: 50%;">
+                        <div class="container-fluid">
+                            <div class="form-group"
+                                 style="display: flex;flex-direction: row;justify-content: space-between">
+                                <label class="input-label" for="name">Description</label>
+                                <input type="text" class="form-control" id="name" aria-describedby="Enter full name"
+                                       placeholder="Enter description" style="width: 80%;">
+                            </div>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="form-group"
+                                 style="display: flex;flex-direction: row;justify-content: space-between">
+                                <label class="input-label" for="address">Address </label>
+                                <input type="text" class="form-control" id="address" aria-describedby="Enter Address"
+                                       placeholder="Enter address" style="width: 80%;">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex;width: 100%;">
+                        <div class="container-fluid" style="display: flex;padding: 0">
+                            <div class="form-group" style="display: flex;width: 100%;justify-content: flex-end">
+                                <div style="padding-left: 10px;padding-right: 10px"><button type="button" class="btn btn-primary">Save</button></div>
+                                <div style="padding-left: 10px;padding-right: 10px"><button type="button" class="btn btn-primary" style="background-color: #ff90ad;color: black">Delete</button></div>
+                                <div style="padding-left: 10px;"><button type="reset" class="btn btn-primary">Clear</button></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div style="display: flex;">
+                    <table class="table" id="customer_table">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Code</th>
+                            <th scope="col">Description</th>
+                            <th class="price" scope="col">Unit Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="row-data">
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td class="price">375.00</td>
+                            <td>@mdo</td>
+                            <td>
+                                <button type="delete" class="btn btn-primary" style="width: 80%;justify-content:center">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="row-data">
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td class="price">325.00</td>
+                            <td>Thornton</td>
+                            <td>
+                                <button type="delete" class="btn btn-primary" style="width: 80%;justify-content:center">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="row-data">
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td class="price">435.00</td>
+                            <td>@twitter</td>
+                            <td>
+                                <button type="delete" class="btn btn-primary" style="width: 80%;justify-content:center">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+
+         <!-- Main content -->
+         <section id="place-order-content" class="content">
+            <div class="container-fluid" style="display: flex;flex-direction: column;padding-top: 30px">
+                <form style="display: flex;flex-wrap: wrap;">
+                    <div style="width: 33.33%;height: 50%;">
+                        <div class="container-fluid">
+                            <div class="form-group"
+                                 style="display: flex;flex-direction: row;justify-content: space-between">
+                                <label class="input-label" for="id">Order ID : </label>
+                                <input type="text" class="form-control" id="id" disabled aria-describedby="order_id"
+                                       placeholder="O-001" style="width: 78%;">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 33.33%;height: 50%;">
+                        <div class="container-fluid">
+                            <div class="form-group"
+                                 style="display: flex;flex-direction: row;justify-content: space-between">
+                                <label class="input-label" for="customer">Customer :</label>
+                                <input type="text" class="form-control" id="customer" aria-describedby="customer"
+                                       placeholder="Enter customer name or ID" style="width: 75%;">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 33.33%;height: 50%;">
+                        <div class="container-fluid">
+                            <div class="form-group"
+                                 style="display: flex;flex-direction: row;justify-content: space-between">
+                                <label class="input-label" for="order-date">Order Date : </label>
+                                <input type="date" disabled class="form-control" id="order-date"  aria-describedby="order_date"
+                                       style="width: 73%;">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 33.33%;height: 50%;">
+                        <div class="container-fluid">
+                            <div class="form-group"
+                                 style="display: flex;flex-direction: row;justify-content: space-between">
+                                <label class="input-label" for="id">Item : </label>
+                                <input type="text" class="form-control" id="item-code" aria-describedby="item code"
+                                       placeholder="Enter Item code or name" style="width: 78%;">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 33.33%;height: 50%;">
+                        <div class="container-fluid">
+                            <div class="form-group"
+                                 style="display: flex;flex-direction: row;justify-content: space-between">
+                                <label class="input-label" for="customer">Unit price :</label>
+                                <input type="text" class="form-control" disabled id="unit_price" aria-describedby="unit price"
+                                       placeholder="0.00" style="width: 75%;">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 33.33%;height: 50%;">
+                        <div class="container-fluid">
+                            <div class="form-group"
+                                 style="display: flex;flex-direction: row;justify-content: space-between">
+                                <label class="input-label" for="quantity">Quantity : </label>
+                                <input type="number" class="form-control" id="quantity" aria-describedby="order_date"
+                                       style="width: 73%;">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex;width: 100%;">
+                        <div class="container-fluid" style="display: flex;">
+                            <div class="form-group" style="display: flex;width: 100%;justify-content: flex-end">
+                                <div style="padding-left: 10px;padding-right: 10px">
+                                    <button type="button" class="btn btn-primary">Add</button>
+                                </div>
+                                <div style="padding-left: 10px;">
+                                    <button type="reset" class="btn btn-primary">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="container-fluid" style="display: flex;">
+                    <table class="table" id="customer_table">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Item ID</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Unit price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="row-data">
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td class="price">250.40</td>
+                            <td>2</td>
+                            <td class="price">500.80</td>
+                            <td>
+                                <button type="delete" class="btn btn-primary" style="width: 80%;justify-content:center">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="row-data">
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td class="price">260.40</td>
+                            <td>1</td>
+                            <td class="price">520.80</td>
+                            <td>
+                                <button type="delete" class="btn btn-primary" style="width: 80%;justify-content:center">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr  class="row-data">
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td class="price">360.25</td>
+                            <td>2</td>
+                            <td class="price">720.50</td>
+                            <td>
+                                <button type="delete" class="btn btn-primary" style="width: 80%;justify-content:center">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr  class="row-data">
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td class="price">260.40</td>
+                            <td>1</td>
+                            <td class="price">520.80</td>
+                            <td>
+                                <button type="delete" class="btn btn-primary" style="width: 80%;justify-content:center">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr  class="row-data">
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td class="price">360.25</td>
+                            <td>2</td>
+                            <td class="price">720.50</td>
+                            <td>
+                                <button type="delete" class="btn btn-primary" style="width: 80%;justify-content:center">
+                                    <a href="dashbord.html" class="tooltip-test" title="Tooltip"></a>Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr  class="row-data">
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td class="price">260.40</td>
+                            <td>1</td>
+                            <td class="price">520.80</td>
+                            <td>
+                                <button type="delete" class="btn btn-primary" style="width: 80%;justify-content:center">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="display: flex;width: 100%;">
+                    <div class="container-fluid" style="display: flex;">
+                        <div class="form-group" style="display: flex;width: 100%;justify-content: flex-end">
+                            <label class="input-label" for="total" style="padding-right: 10px">Total :</label>
+                            <input class="form-control" id="total" disabled placeholder="0.00"
+                                   style="width: 20%;text-align: right">
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex;width: 100%;">
+                    <div class="container-fluid" style="display: flex;">
+                        <div class="form-group" style="display: flex;width: 100%;justify-content: flex-end">
+                            <div style="padding-left: 10px;padding-right: 10px">
+                                <button type="button" class="btn btn-primary">Place Order</button>
+                            </div>
+                            <div style="padding-left: 10px;">
+                                <button type="reset" class="btn btn-primary"
+                                        style="background-color: #ff90ad;color: black">Discard
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+
+        <!-- Search orders content -->
+        <section id="search-orders-content"class="content">
+                    <div class="container-fluid" style="display: flex;flex-direction: column; padding-top: 30px">
+                        <form style="display: flex;flex-wrap: wrap;">
+                            <div style="width: 33.33%;height: 50%;">
+                                <div class="container-fluid">
+                                    <div class="form-group"
+                                         style="display: flex;flex-direction: row;justify-content: space-between">
+                                        <label class="input-label" for="id">Order ID : </label>
+                                        <input type="text" class="form-control" id="id" aria-describedby="order_id"
+                                               placeholder="Enter Order ID" style="width: 78%;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="width: 33.33%;height: 50%;">
+                                <div class="container-fluid">
+                                    <div class="form-group"
+                                         style="display: flex;flex-direction: row;justify-content: space-between">
+                                        <label class="input-label" for="customer">Customer :</label>
+                                        <input type="text" class="form-control" id="customer" aria-describedby="customer"
+                                               placeholder="Enter customer name or ID" style="width: 75%;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="width: 33.33%;height: 50%;">
+                                <div class="container-fluid">
+                                    <div class="form-group"
+                                         style="display: flex;flex-direction: row;justify-content: space-between">
+                                        <label class="input-label" for="order-date">Order Date : </label>
+                                        <input type="date" class="form-control" id="order-date" aria-describedby="order_date" style="width: 73%;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display: flex;width: 100%;">
+                                <div class="container-fluid" style="display: flex;padding: 0">
+                                    <div class="form-group" style="display: flex;width: 100%;justify-content: flex-end">
+                                        <div style="padding-left: 10px;padding-right: 10px"><button type="button" class="btn btn-primary">Search</button></div>
+                                        <div style="padding-left: 10px;"><button type="reset" class="btn btn-primary">Clear</button></div>
+        
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div style="display: flex;">
+                            <table class="table" id="customer_table">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Order ID</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Customer</th>
+                                    <th scope="col" style="text-align: right">Total</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="row-data">
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td class="totalPrice">29800.00</td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary" style="width: 80%;justify-content:center" data-toggle="modal" >
+                                            View
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="row-data">
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td class="totalPrice">74203.00</td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary" style="width: 80%;justify-content:center">
+                                            <a href="#"></a> View
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="row-data">
+                                    <th scope="row">3</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td class="totalPrice">142015.00</td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary" style="width: 80%;justify-content:center">
+                                            <a href="#"></a> View
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer" style="margin: 0; text-align: center; height: 10%;">
+        <strong>Copyright &copy; 2020 <a href="http://ijse.lk">ijse.lk</a>.</strong>
+        All rights reserved.
+        <div class="float-none d-none d-sm-inline-block">
+            <b>Version</b> 1.0.0
+        </div>
+    </footer>
+
+</div>
+
+</body>
+</html>
